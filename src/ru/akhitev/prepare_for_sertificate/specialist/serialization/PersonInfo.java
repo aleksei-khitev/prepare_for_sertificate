@@ -3,11 +3,11 @@ package ru.akhitev.prepare_for_sertificate.specialist.serialization;
 import java.io.Serializable;
 
 /**
- *
+ * Если н
  * @author hitev
  */
 public class PersonInfo implements Serializable{
-    transient String name;
+    String name;
     int age;
 
     public PersonInfo(String name, int age)
