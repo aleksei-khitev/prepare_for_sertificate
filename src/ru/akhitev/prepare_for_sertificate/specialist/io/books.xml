@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<books>
+    <book price="500">
+        Book 1
+    </book>
+    <book price="300">
+        Book 2
+    </book>
+    <book price="400">
+        Book 3
+    </book>
+</books>
