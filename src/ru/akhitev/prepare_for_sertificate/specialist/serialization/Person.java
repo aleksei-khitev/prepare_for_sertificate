@@ -1,5 +1,8 @@
 package ru.akhitev.prepare_for_sertificate.specialist.serialization;
 
+import javax.xml.stream.XMLOutputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamWriter;
 import java.io.*;
 
 public class Person implements Externalizable {
@@ -47,4 +50,30 @@ public class Person implements Externalizable {
         this.lastName = new String(bytes, CHARSET);
         this.age=objectInput.readInt();
     }
+
+    public void writeXml(OutputStream outputStream){
+        XMLOutputFactory outputFactory = XMLOutputFactory.newInstance();
+        XMLStreamWriter writer;
+        try{
+            writer = outputFactory.createXMLStreamWriter(outputStream, "utf-8");
+            writer.writeStartDocument("utf-8", "1.0");
+            writer.writeStartElement("person");
+            writer.writeStartElement("lastName");
+            writer.writeCharacters(this.lastName);
+            writer.writeEndElement();
+            writer.writeStartElement("name");
+            writer.writeCharacters(this.name);
+            writer.writeEndElement();
+            writer.writeStartElement("age");
+            writer.writeCharacters(String.valueOf(this.age));
+            writer.writeEndElement();
+            writer.writeEndElement();
+            writer.writeEndDocument();
+            writer.close();
+        } catch (XMLStreamException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
