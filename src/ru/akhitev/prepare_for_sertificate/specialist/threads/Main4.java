@@ -7,6 +7,7 @@ import java.util.Random;
  */
 public class Main4 {
     private static ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>(){
+        // Переопределять инициализацию не обязательно
         @Override
         protected Integer initialValue(){
             return new Random().nextInt(100);
