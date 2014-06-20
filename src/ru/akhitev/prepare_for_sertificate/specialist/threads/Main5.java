@@ -8,8 +8,8 @@ class Data{
     static int countSt=0;
 }
 class MyThread implements Runnable{
-    Data obj;
-    MyThread(Data d){
+    AnotherData obj;
+    MyThread(AnotherData d){
         obj=d;
         new Thread(this).start();
     }
@@ -27,10 +27,10 @@ class MyThread implements Runnable{
     static void AddStatic(){
         try{
             Thread.sleep(10);
-            int n=Data.countSt;
+            int n= AnotherData.countSt;
             n++;
             Thread.sleep(10);
-            Data.countSt=n;
+            AnotherData.countSt=n;
         }catch(InterruptedException ex){ }
     }
     public void run(){
@@ -42,7 +42,7 @@ class MyThread implements Runnable{
 public class Main5 {
     public static void main(String[] args) throws Exception{
         // Обид объект на оба потока
-        Data d = new Data();
+        AnotherData d = new AnotherData();
         //MyThread t1 = new MyThread(d);
         //MyThread t2 = new MyThread(d);
         //SynchronyzedMethodsMyThread t1 = new SynchronyzedMethodsMyThread(d);
@@ -51,13 +51,13 @@ public class Main5 {
         SynchronyzedBothConstructionsMyThread t2 = new SynchronyzedBothConstructionsMyThread(d);
         Thread.sleep(1000);
         System.out.println(d.count);
-        System.out.println(Data.countSt);
+        System.out.println(AnotherData.countSt);
     }
 }
 
 class SynchronyzedMethodsMyThread implements Runnable{
-    Data obj;
-    SynchronyzedMethodsMyThread(Data d){
+    AnotherData obj;
+    SynchronyzedMethodsMyThread(AnotherData d){
         obj=d;
         new Thread(this).start();
     }
@@ -75,10 +75,10 @@ class SynchronyzedMethodsMyThread implements Runnable{
     synchronized static void AddStatic(){
         try{
             Thread.sleep(10);
-            int n=Data.countSt;
+            int n= AnotherData.countSt;
             n++;
             Thread.sleep(10);
-            Data.countSt=n;
+            AnotherData.countSt=n;
         }catch(InterruptedException ex){ }
     }
     public void run(){
@@ -88,8 +88,8 @@ class SynchronyzedMethodsMyThread implements Runnable{
 }
 
 class SynchronyzedBothConstructionsMyThread implements Runnable{
-    Data obj;
-    SynchronyzedBothConstructionsMyThread(Data d){
+    AnotherData obj;
+    SynchronyzedBothConstructionsMyThread(AnotherData d){
         obj=d;
         new Thread(this).start();
     }
@@ -109,10 +109,10 @@ class SynchronyzedBothConstructionsMyThread implements Runnable{
     synchronized static void AddStatic(){
         try{
             Thread.sleep(10);
-            int n=Data.countSt;
+            int n= AnotherData.countSt;
             n++;
             Thread.sleep(10);
-            Data.countSt=n;
+            AnotherData.countSt=n;
         }catch(InterruptedException ex){ }
     }
     public void run(){
